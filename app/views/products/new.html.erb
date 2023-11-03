@@ -1,0 +1,9 @@
+<h1>New product</h1>
+
+<%= render "form", product: @product_write, url: category_products_path(@category) %>
+
+<br>
+
+<div>
+  <%= link_to "Back to products", category_products_path(@category) %>
+</div>

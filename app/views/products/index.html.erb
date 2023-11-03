@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+<% if @search_time.present? %>
+  <a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-color: rgba(var(--bs-success-rgb), .25)">
+    <div>
+      <p>
+        <strong>Retrieval time :</strong>
+        <%= (@search_time * 1000).round(2) %>ms
+      </p>
+    </div>
+  </a>
+  <% end %>
+<%= form_with(url: category_products_path(@category), method: :get, local: true) do |form| %>
+  <%= form.text_field :write_search, placeholder: "write search...." %>
+  <%= form.text_field :read_search, placeholder: "read search...." %>
+  <%= form.submit "Search" ,class: "btn btn-success"%>
+<% end %>
+<a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-x: 10px; --bs-focus-ring-y: 10px; --bs-focus-ring-blur: 4px">
+  <h2>Products</h2>
+</a>
+
+
+<div id="products">
+  <% @products.each do |product| %>
+    <div>
+      <p>
+        <strong>Name:</strong>
+        <%= product.name %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= product.description %>
+      </p>
+
+      <p>
+        <strong>Price:</strong>
+        <%= product.price %>
+      </p>
+
+    </div>
+    <p>
+      <%= link_to "Show this product", category_product_path( @category, @write ? product : product.product_id)%>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New product", new_category_product_path %>
+<div>
+  <%= link_to "Back to category", category_path(@category) %>
+</div>
+<%= will_paginate @products %>

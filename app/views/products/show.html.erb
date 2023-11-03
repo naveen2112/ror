@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+<div>
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= @product.category_name %>
+  </p>
+
+</div>
+
+<div>
+  <%= link_to "Edit this product", edit_category_product_path(@category, @product_write) %> |
+  <%= link_to "Back to products", category_products_path(@category) %>
+
+  <%= button_to "Destroy this product", category_product_path(@category, @product_write), method: :delete %>
+</div>
