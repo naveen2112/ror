@@ -22,4 +22,9 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: cqrs_1
+  username: postgres
+  password: admin123
+  host: dbror.cgqbvrmejkno.ap-south-1.rds.amazonaws.com
+  port: 5432
+
